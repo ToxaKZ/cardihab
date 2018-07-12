@@ -1,0 +1,34 @@
+<form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+  <div class="form-group">
+    <label for="username">UserName</label>
+    <input type="text" required [(ngModel)]="model.username" class="form-control" id="username" name="username" #username="ngModel">
+    <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+      UserName is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" required [(ngModel)]="model.password" class="form-control" id="password" name="password" #password="ngModel">
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+      Password is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="medications">Medication list</label>
+    <textarea class="form-control" required [(ngModel)]="model.medications" id="medications" name="medications" #medications="ngModel"
+      rows="3"></textarea>
+    <div [hidden]="medications.valid || medications.pristine" class="alert alert-danger">
+      Medications is required
+    </div>
+  </div>
+
+
+  <button type="submit" [disabled]="!searchForm.form.valid" class="btn btn-success">Submit</button>
+</form>
+
+
+<div [hidden]="!gotData">
+  <app-medications-list [medications]="responseData"></app-medications-list>
+</div>

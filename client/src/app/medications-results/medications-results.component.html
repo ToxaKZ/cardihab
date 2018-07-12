@@ -1,0 +1,10 @@
+<h1>Medication result</h1>
+<div>
+  <div *ngFor="let medication of medications;">
+    {{ medication.name }}
+    <span class="badge badge-primary">{{ medication.data.length }} </span>
+    <ul class="list-group">
+      <li *ngFor="let med of medication.data" class="list-group-item">{{med.displayName}}<br>{{med.id}}<br>{{med.appearance}}</li>
+    </ul>
+  </div>
+</div>
